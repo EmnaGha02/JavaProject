@@ -1,0 +1,7 @@
+------------------------------------FACTURE---------------------------------------------------------
+nom et prenom : mariem kallel
+cin : 12345677
+Docteur  Specialite : emna gharbi 
+Hospitalisation ou rendez-vous  : Rendez-vous
+Montant à payer : 70
+Mode de paiment :  payer  avec Cash

@@ -1,0 +1,23 @@
+*patient:
+-chercher les médecins, consulter leurs calendriers et voir les disponibilités
+-demander un rendez vous (include vérifier les disponibilités)
+-consulter la facture
+-gérer les rendez vous(suppression modification)
+-consulter l'historique et le dossier médical
+-consulter la fiche de la consultation
+*médecin:
+-gerer la fiche personnel(modification)
+
+-consulter les fiches médecins ????? ynasnes aa s7abou ?? 
+
+-gérer les dossiers medicals( création suppression modification)
+-gérer les rendez vous
+-gérer les fiches des consultations
+-consulter sa calendrier ==  gérer les rendez vous 
+*administrateur:
+-consulter les fiches medecins
+-gérer les dossiers medicals( création suppression modification)
+-gérer les rendez vous
+-gérez les fiches des consultations
+-consulter les calendriers
+-calculer les factures et gérer les paiements 
