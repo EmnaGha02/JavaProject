@@ -1,0 +1,195 @@
+package UserRegisration;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import java.awt.Color;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.awt.event.ActionEvent;
+
+public class registerMedecin {
+
+	private JFrame frame;
+	private JTextField textField_1;
+	private JLabel lblNewLabel_1;
+	private JTextField textField_2;
+	private JLabel lblFamilyName;
+	private JTextField textField_3;
+	private JLabel lblId;
+	private JTextField textField_4;
+	private JLabel lblPassword;
+	private JTextField textField_5;
+	private JLabel lblMail;
+	private JTextField textField_6;
+	private JLabel lblSpeciali;
+	private JTextField textField_7;
+	private JLabel lblSpeciality;
+	private JLabel lblRegisterAsDoctor;
+	private JButton btnNewButton;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					registerMedecin window = new registerMedecin();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public registerMedecin() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 500, 700);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(138, 105, 204, 33);
+		frame.getContentPane().add(textField_1);
+		
+		lblNewLabel_1 = new JLabel("CIN : ");
+		lblNewLabel_1.setForeground(Color.DARK_GRAY);
+		lblNewLabel_1.setBounds(54, 105, 133, 33);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(138, 169, 204, 33);
+		frame.getContentPane().add(textField_2);
+		
+		lblFamilyName = new JLabel("full name : ");
+		lblFamilyName.setForeground(Color.DARK_GRAY);
+		lblFamilyName.setBounds(54, 169, 133, 33);
+		frame.getContentPane().add(lblFamilyName);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBounds(138, 229, 204, 33);
+		frame.getContentPane().add(textField_3);
+		
+		lblId = new JLabel("id : ");
+		lblId.setForeground(Color.DARK_GRAY);
+		lblId.setBounds(54, 229, 133, 33);
+		frame.getContentPane().add(lblId);
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		textField_4.setBounds(138, 287, 204, 33);
+		frame.getContentPane().add(textField_4);
+		
+		lblPassword = new JLabel("password : ");
+		lblPassword.setForeground(Color.DARK_GRAY);
+		lblPassword.setBounds(54, 287, 133, 33);
+		frame.getContentPane().add(lblPassword);
+		
+		textField_5 = new JTextField();
+		textField_5.setColumns(10);
+		textField_5.setBounds(138, 359, 204, 33);
+		frame.getContentPane().add(textField_5);
+		
+		lblMail = new JLabel("mail : ");
+		lblMail.setForeground(Color.DARK_GRAY);
+		lblMail.setBounds(54, 359, 133, 33);
+		frame.getContentPane().add(lblMail);
+		
+		textField_6 = new JTextField();
+		textField_6.setColumns(10);
+		textField_6.setBounds(138, 423, 204, 33);
+		frame.getContentPane().add(textField_6);
+		
+		lblSpeciali = new JLabel("Speciality : ");
+		lblSpeciali.setForeground(Color.DARK_GRAY);
+		lblSpeciali.setBounds(54, 423, 133, 33);
+		frame.getContentPane().add(lblSpeciali);
+		
+		textField_7 = new JTextField();
+		textField_7.setColumns(10);
+		textField_7.setBounds(138, 492, 204, 120);
+		frame.getContentPane().add(textField_7);
+		
+		lblSpeciality = new JLabel("About me  : ");
+		lblSpeciality.setForeground(Color.DARK_GRAY);
+		lblSpeciality.setBounds(54, 492, 133, 33);
+		frame.getContentPane().add(lblSpeciality);
+		
+		lblRegisterAsDoctor = new JLabel("Register as a Doctor ");
+		lblRegisterAsDoctor.setFont(new Font("Dialog", Font.BOLD, 26));
+		lblRegisterAsDoctor.setBounds(101, 22, 327, 57);
+		frame.getContentPane().add(lblRegisterAsDoctor);
+		
+		btnNewButton = new JButton("Submit ");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				String firstName = firstname.getText();
+                String lastName = lastname.getText();
+                String emailId = email.getText();
+                String userName = username.getText();
+                String mobileNumber = cin.getText();
+                int len = mobileNumber.length();
+                String password = passwordField.getText();
+
+                
+                String msg = "" + firstName;
+                msg += " \n";
+                if (len != 8) {
+                    JOptionPane.showMessageDialog(btnNewButton, "Enter a valid CIN ");
+                }
+
+                try {
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/swing_demo", "root", "root");
+                     //store into account 
+                    
+                    String query = "INSERT INTO account values('" + firstName + "','" + lastName + "','" + userName + "','" +
+                        password + "','" + emailId + "','" + mobileNumber + "')";
+                    
+                    // test exist wale 
+                    
+                    Statement sta = connection.createStatement();
+                    int x = sta.executeUpdate(query);
+                    if (x == 0) {
+                        JOptionPane.showMessageDialog(btnNewButton, "This is alredy exist");
+                    } else {
+                        JOptionPane.showMessageDialog(btnNewButton,
+                            "Welcome, " + msg + "Your account is sucessfully created");
+                    }
+                    connection.close();
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
+				
+				
+				
+			}
+		});
+		btnNewButton.setBounds(179, 634, 117, 25);
+		frame.getContentPane().add(btnNewButton);
+	}
+
+}

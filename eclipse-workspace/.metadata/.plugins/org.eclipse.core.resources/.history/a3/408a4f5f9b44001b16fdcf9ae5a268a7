@@ -1,0 +1,167 @@
+package Login_Sys;
+
+import java.awt.Component;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+
+import EspaceAdmin.Admin;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JSeparator;
+
+public class login_S {
+
+	protected static final String JOptionPAne = null;
+	private JFrame frame;
+	private JTextField txtUsername;
+	private JPasswordField txtPassword;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					login_S window = new login_S();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public login_S() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(200, 200, 500, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Login");
+		lblNewLabel.setBounds(217, 32, 70, 15);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel lblUsername = new JLabel("Username");
+		lblUsername.setBounds(56, 86, 92, 15);
+		frame.getContentPane().add(lblUsername);
+		
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setBounds(53, 145, 70, 15);
+		frame.getContentPane().add(lblPassword);
+		
+		txtUsername = new JTextField();
+		txtUsername.setBounds(217, 84, 192, 24);
+		frame.getContentPane().add(txtUsername);
+		txtUsername.setColumns(10);
+		
+		txtPassword = new JPasswordField();
+		txtPassword.setBounds(217, 141, 192, 24);
+		frame.getContentPane().add(txtPassword);
+		
+		JLabel lblAs = new JLabel("As : ");
+		lblAs.setBounds(56, 197, 70, 15);
+		frame.getContentPane().add(lblAs);
+		
+		JButton btnRegister = new JButton("Login");
+		btnRegister.setActionCommand("login");
+		btnRegister.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String password = txtPassword.getText();
+				String username = txtUsername.getText();
+				String txtPosition = String.valueof(txtPosition.getSelectedItem)
+				
+				if ( password.contains("admin") && username.contains("admin") && txtPosition.contains("admin")) {
+					
+					txtPassword.setText(null);
+					txtUsername.setText(null);
+					
+					// todkhel lel esapce admin 
+					
+					Admin info = new Admin();
+					Admin.main(null);
+				}
+
+				
+				else 
+				{
+					
+					JOptionPane.showConfirmDialog(null, "Invalid Login details" , "Login Error ", JOptionPane.ERROR_MESSAGE  );
+				}
+					
+			}
+		});
+		
+		
+		btnRegister.setBounds(56, 234, 117, 25);
+		frame.getContentPane().add(btnRegister);
+		
+		JComboBox txtPosition = new JComboBox();
+		txtPosition.setModel(new DefaultComboBoxModel(new String[] {"patient ", "medecin ", "adminstrateur "}));
+		txtPosition.setBounds(219, 192, 115, 24);
+		frame.getContentPane().add(txtPosition);
+		
+		
+		JButton btnReset = new JButton("reset ");
+		btnReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				txtUsername.setText(null);
+				txtPassword.setText(null);
+			
+			}
+		});
+		
+		
+		
+		btnReset.setBounds(217, 234, 117, 25);
+		frame.getContentPane().add(btnReset);
+		
+		JButton btnCancel = new JButton("exit");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				JFrame frmLoginSystem = new JFrame("exit") ;
+				if( JOptionPane.showConfirmDialog(frmLoginSystem , "Confirm if you want to exit" , "Login Systems " , 
+				JOptionPane.YES_NO_OPTION)== JOptionPane.YES_NO_OPTION){
+				System.exit(0);
+				}
+
+				
+				
+			}
+		});
+		btnCancel.setBounds(371, 234, 117, 25);
+		frame.getContentPane().add(btnCancel);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(12, 224, 476, 2);
+		frame.getContentPane().add(separator);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(12, 59, 476, 2);
+		frame.getContentPane().add(separator_1);
+	}
+}
