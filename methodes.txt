@@ -7,6 +7,7 @@
 -consulter la fiche de la consultation
 *médecin:
 -gerer la fiche personnel(modification)
+------------ test
 
 -consulter les fiches médecins ????? ynasnes aa s7abou ?? 
 
@@ -14,6 +15,13 @@
 -gérer les rendez vous
 -gérer les fiches des consultations
 -consulter sa calendrier ==  gérer les rendez vous 
+=======
+-consulter les fiches médecins
+-gérer les dossiers medicals( création suppression modification)
+-gérer les rendez vous
+-gérer les fiches des consultations
+-consulter sa calendrier
+-------- main
 *administrateur:
 -consulter les fiches medecins
 -gérer les dossiers medicals( création suppression modification)
