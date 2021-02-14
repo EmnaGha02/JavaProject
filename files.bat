@@ -1,0 +1,2 @@
+mkdir Doctors
+mkdir Patients
